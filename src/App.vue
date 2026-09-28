@@ -2,6 +2,7 @@
 import { computed, onBeforeUnmount, onMounted, ref, watch } from 'vue'
 import { useRoute } from 'vue-router'
 import { store, activePerson } from './lib/store'
+import NavIcon from './components/NavIcon.vue'
 
 const route = useRoute()
 const menuOpen = ref(false)
@@ -27,7 +28,7 @@ onBeforeUnmount(() => { window.removeEventListener('keydown', handleEscape); doc
       <RouterLink class="brand" to="/" @click="closeMenu"><span class="brand-mark">+</span><span>Pflege-Cockpit</span></RouterLink>
       <nav aria-label="Hauptnavigation">
         <RouterLink v-for="item in navigation" :key="item[0]" :to="item[0]" @click="menuOpen = false">
-          <span class="nav-icon" aria-hidden="true">{{ item[2] === 'grid' ? '⌂' : item[2] === 'people' ? '◎' : item[2] === 'pulse' ? '∿' : item[2] === 'wallet' ? '€' : item[2] === 'clock' ? '◷' : item[2] === 'hands' ? '◇' : item[2] === 'file' ? '▤' : '□' }}</span>
+          <span class="nav-icon" aria-hidden="true"><NavIcon :name="item[2]" /></span>
           {{ item[1] }}
         </RouterLink>
       </nav>
