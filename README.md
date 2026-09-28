@@ -48,6 +48,7 @@ erfolgt in Phase 4.
 - [Inventar](docs/01-inventory.md)
 - [Funktionale Spezifikation](docs/02-specification.md)
 - [Abnahmetests](docs/acceptance-tests.md)
+- [Vollständigkeitsprüfung](docs/03-acceptance-audit.md)
 
 Die Rechner dienen der Orientierung und ersetzen keine Begutachtung oder
 Leistungsentscheidung durch Pflegekasse beziehungsweise Medizinischen Dienst.
