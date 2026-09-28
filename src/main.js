@@ -22,7 +22,11 @@ const routes = [
   { path: '/dokumente', component: DocumentsView, meta: { title: 'Pflege-Dokumente' } },
 ]
 
-const router = createRouter({ history: createWebHashHistory(), routes })
+const router = createRouter({
+  history: createWebHashHistory(),
+  routes,
+  scrollBehavior: () => ({ top: 0, left: 0 }),
+})
 router.afterEach((route) => { document.title = `${route.meta.title} · Pflege-Cockpit` })
 
 createApp(App).use(router).mount('#app')
