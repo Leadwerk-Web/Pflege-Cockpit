@@ -4,6 +4,9 @@ Internes Review-Projekt zur funktionalen Analyse der Pflege-Werkzeuge im eingelo
 
 ## Aktueller Stand
 
-Schritt 1 ist abgeschlossen: Das Inventar der frei zugänglichen und gesperrten Funktionen liegt unter [`docs/01-inventory.md`](docs/01-inventory.md).
+- Phase 1: [`docs/01-inventory.md`](docs/01-inventory.md)
+- Phase 2: [`docs/02-specification.md`](docs/02-specification.md)
 
-Die Implementierung beginnt erst nach Freigabe des Inventars.
+Registrierung, E-Mail-Verifizierung und Onboarding sind nicht Teil des Nachbaus. Der
+Umfang konzentriert sich auf alle Rechner und die dafür benötigten Stamm-, Antrags-
+und Dokumentfunktionen.
