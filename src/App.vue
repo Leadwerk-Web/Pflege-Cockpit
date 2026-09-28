@@ -2,7 +2,7 @@
 import { computed, onBeforeUnmount, onMounted, ref, watch } from 'vue'
 import { useRoute } from 'vue-router'
 import { store, activePerson } from './lib/store'
-import NavIcon from './components/NavIcon.vue'
+import AppIcon from './components/AppIcon.vue'
 
 const route = useRoute()
 const menuOpen = ref(false)
@@ -25,10 +25,10 @@ onBeforeUnmount(() => { window.removeEventListener('keydown', handleEscape); doc
   <div class="app-shell">
     <a class="skip-link" href="#main-content">Zum Inhalt springen</a>
     <aside id="main-navigation" class="sidebar" :class="{ open: menuOpen }">
-      <RouterLink class="brand" to="/" @click="closeMenu"><span class="brand-mark">+</span><span>Pflege-Cockpit</span></RouterLink>
+      <RouterLink class="brand" to="/" @click="closeMenu"><span class="brand-mark"><AppIcon name="plus" /></span><span>Pflege-Cockpit</span></RouterLink>
       <nav aria-label="Hauptnavigation">
         <RouterLink v-for="item in navigation" :key="item[0]" :to="item[0]" @click="menuOpen = false">
-          <span class="nav-icon" aria-hidden="true"><NavIcon :name="item[2]" /></span>
+          <span class="nav-icon" aria-hidden="true"><AppIcon :name="item[2]" /></span>
           {{ item[1] }}
         </RouterLink>
       </nav>
@@ -36,7 +36,7 @@ onBeforeUnmount(() => { window.removeEventListener('keydown', handleEscape); doc
     </aside>
     <main id="main-content">
       <header class="topbar">
-        <button class="menu-button" type="button" aria-controls="main-navigation" :aria-expanded="menuOpen" :aria-label="menuOpen ? 'Navigation schließen' : 'Navigation öffnen'" @click="menuOpen = !menuOpen">☰</button>
+        <button class="menu-button" type="button" aria-controls="main-navigation" :aria-expanded="menuOpen" :aria-label="menuOpen ? 'Navigation schließen' : 'Navigation öffnen'" @click="menuOpen = !menuOpen"><AppIcon :name="menuOpen ? 'close' : 'menu'" /></button>
         <div><p class="eyebrow">{{ route.meta.title }}</p><h1>{{ route.meta.title }}</h1></div>
         <label class="person-switch"><span>Aktiver Pflegefall</span><select v-model="store.activePersonId"><option v-for="p in store.people" :key="p.id" :value="p.id">{{ p.firstName }} {{ p.lastName }} · PG {{ p.degree }}</option></select></label>
       </header>

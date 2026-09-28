@@ -1,5 +1,6 @@
 <script setup>
 import { computed, reactive, watch } from 'vue'
+import AppIcon from '../components/AppIcon.vue'
 import { activePerson, store } from '../lib/store'
 import { benefits, combination, euro } from '../lib/calculations'
 
@@ -25,7 +26,7 @@ function sanitizeNumberInput(event) { if (event.target.type === 'number' && even
     <div class="table-wrap desktop-budget-table"><table><thead><tr><th>Monat</th><th>PG</th><th>Sachleistung Plan</th><th>Sachleistung Ist</th><th>Umwandlung Ist</th><th>Pflegegeld</th><th>Quote</th><th>Entlastung ausgegeben</th></tr></thead><tbody><tr v-for="(row,index) in plan" :key="months[index]"><td><strong>{{ months[index] }}</strong></td><td><select v-model.number="row.degree"><option v-for="n in 6" :key="n-1" :value="n-1">{{ n-1 }}</option></select></td><td><div class="money-input"><span>€</span><input v-model.number="row.plannedInKind" type="number" min="0" :max="results[index].rule.inKind" step="0.01" /></div><small>max. {{ euro(results[index].rule.inKind) }}</small></td><td><div class="money-input"><span>€</span><input v-model.number="row.inKind" type="number" min="0" step="0.01" /></div><small v-if="results[index].ownCost" class="danger">inkl. {{ euro(results[index].ownCost) }} privat</small></td><td><div class="money-input"><span>€</span><input v-model.number="row.conversion" type="number" min="0" :max="results[index].conversionMax" step="0.01" /></div><small>max. {{ euro(results[index].conversionMax) }}</small></td><td><strong>{{ euro(results[index].cash) }}</strong></td><td><span class="usage"><i :style="{width:`${Math.min(100,results[index].ratio)}%`}"></i></span><small>{{ results[index].ratio }} %</small></td><td><div class="money-input"><span>€</span><input v-model.number="row.reliefSpent" type="number" min="0" step="0.01" /></div></td></tr></tbody></table></div>
     <div class="budget-mobile-list">
       <details v-for="(row,index) in plan" :key="`mobile-${months[index]}`" :open="index === 0">
-        <summary><span><small>Monat</small><strong>{{ months[index] }}</strong></span><span><small>Pflegegeld</small><strong>{{ euro(results[index].cash) }}</strong></span></summary>
+        <summary><span><small>Monat</small><strong>{{ months[index] }}</strong></span><span><small>Pflegegeld</small><strong>{{ euro(results[index].cash) }}</strong></span><span class="budget-disclosure-icon" aria-hidden="true"><AppIcon name="chevron-down" /></span></summary>
         <div class="budget-card-grid">
           <label>Pflegegrad<select v-model.number="row.degree"><option v-for="n in 6" :key="n-1" :value="n-1">{{ n-1 }}</option></select></label>
           <label>Sachleistung geplant<div class="money-input"><span>€</span><input v-model.number="row.plannedInKind" type="number" inputmode="decimal" min="0" :max="results[index].rule.inKind" step="0.01" @keydown="restrictNumberInput" /></div><small>Bis {{ euro(results[index].rule.inKind) }}</small></label>
@@ -37,5 +38,5 @@ function sanitizeNumberInput(event) { if (event.target.type === 'number' && even
       </details>
     </div>
   </article>
-  <div class="info-banner"><strong>Gemeinsamer Jahresbetrag: {{ euro(3539) }}</strong><span>Verhinderungs- und Kurzzeitpflege greifen auf denselben Jahrestopf zu. Buchungen werden im Rechner für Verhinderungspflege erfasst.</span><RouterLink to="/verhinderungspflege">Öffnen →</RouterLink></div>
+  <div class="info-banner"><strong>Gemeinsamer Jahresbetrag: {{ euro(3539) }}</strong><span>Verhinderungs- und Kurzzeitpflege greifen auf denselben Jahrestopf zu. Buchungen werden im Rechner für Verhinderungspflege erfasst.</span><RouterLink to="/verhinderungspflege">Öffnen <AppIcon name="arrow-right" /></RouterLink></div>
 </template>

@@ -1,5 +1,6 @@
 <script setup>
 import { computed, reactive, ref } from 'vue'
+import AppIcon from '../components/AppIcon.vue'
 import { modules, therapyQuestions, outsideQuestions, householdQuestions } from '../data/questions'
 import { calculateAssessment } from '../lib/calculations'
 import { activePerson, store, uid } from '../lib/store'
@@ -30,7 +31,7 @@ function fillZero() { modules.forEach((module) => answers[module.key].fill(0)); 
         <button v-for="module in modules.slice(0,4)" :key="module.key" type="button" role="tab" :aria-selected="step===module.key" :class="{ active: step===module.key }" @click="step=module.key"><span>{{ module.key.slice(1) }}</span>{{ module.short }}</button>
         <button type="button" role="tab" :aria-selected="step==='m5'" :class="{ active: step==='m5' }" @click="step='m5'"><span>5</span>Therapie</button>
         <button v-for="module in modules.slice(4)" :key="module.key" type="button" role="tab" :aria-selected="step===module.key" :class="{ active: step===module.key }" @click="step=module.key"><span>{{ module.key.slice(1) }}</span>{{ module.short }}</button>
-        <button type="button" role="tab" :aria-selected="step==='extra'" :class="{ active: step==='extra' }" @click="step='extra'"><span>+</span>Unterwegs & Haushalt</button>
+        <button type="button" role="tab" :aria-selected="step==='extra'" :class="{ active: step==='extra' }" @click="step='extra'"><span><AppIcon name="plus" /></span>Unterwegs & Haushalt</button>
       </div>
       <article v-if="activeModule" class="panel questionnaire">
         <div class="panel-heading"><div><p class="eyebrow">{{ activeModule.questions.length }} Kriterien</p><h3>{{ activeModule.title }}</h3></div><span class="score-chip">{{ result.scores[activeModule.key] }} Punkte</span></div>
