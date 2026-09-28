@@ -40,8 +40,10 @@ npm run build
 ## Deployment
 
 Der Build erzeugt eine statische Anwendung im Ordner `dist/`. Durch die Hash-Routen
-funktioniert sie ohne Serverkonfiguration auf GitHub Pages. Die Veröffentlichung
-erfolgt in Phase 4.
+funktioniert sie ohne Serverkonfiguration auf GitHub Pages. Der vorbereitete
+Workflow liegt unter `.github/workflows/deploy-pages.yml`. Die Aktivierung ist
+aktuell blockiert, weil der verwendete GitHub-Plan Pages für dieses private
+Repository nicht unterstützt; Details stehen in der Vollständigkeitsprüfung.
 
 ## Projektdokumentation
 

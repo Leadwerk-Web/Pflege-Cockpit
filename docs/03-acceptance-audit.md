@@ -27,7 +27,6 @@ Binnenvergleich mit der Referenzanwendung vorliegt.
 | Responsive Darstellung | Breakpoints in `src/styles.css`, mobile Sichtprüfung |
 | README mit Installation, Start, Tests und Deployment | `README.md` |
 | Reproduzierbarer Build und Tests | `npm test`, `npm run build` |
-| Automatisches GitHub-Pages-Deployment | `.github/workflows/deploy-pages.yml` |
 
 ## Bewusste Scope-Entscheidungen
 
@@ -51,6 +50,22 @@ Binnenvergleich mit der Referenzanwendung vorliegt.
 | 13 ursprünglich erwartete Dokumente | Im geprüften Basis-Account waren nur fünf Typen sichtbar. Umgesetzt wurden diese fünf; keine nicht zugänglichen Vorlagen wurden als Originalfunktion ausgegeben. |
 | Miro-Designvergleich | Die beschriebene Petrol-/Koralle-Designsprache wurde umgesetzt; ein dokumentierter visueller Vergleich mit dem privaten Board liegt nicht vor. |
 
+## Externer Blocker für GitHub Pages
+
+Der getestete Build und der GitHub-Actions-Workflow sind vorhanden. Die Aktivierung
+von GitHub Pages wurde am 28. September 2026 über die GitHub-API versucht und mit
+`422 Your current plan does not support GitHub Pages for this repository`
+abgewiesen. Das Repository ist wie gefordert privat; der aktuelle Organisationsplan
+erlaubt Pages für dieses private Repository nicht.
+
+Der Workflow ist deshalb bis zur Entscheidung nur manuell startbar. Für eine
+öffentliche Vorschau ist eine der folgenden externen Entscheidungen nötig:
+
+1. GitHub-Plan mit Pages-Unterstützung für private Repositories aktivieren,
+2. das Repository öffentlich schalten oder
+3. ein getrenntes öffentliches Deployment-Repository beziehungsweise einen anderen
+   Hostinganbieter freigeben.
+
 ## Automatische Prüfergebnisse
 
 - 15 Berechnungstests bestanden.
@@ -61,7 +76,9 @@ Binnenvergleich mit der Referenzanwendung vorliegt.
 
 ## Abnahmefazit
 
-Die Review-App und die statische Veröffentlichung sind funktionsfähig. Die Aussage
+Die Review-App und der statische Produktions-Build sind funktionsfähig. Die
+GitHub-Pages-Veröffentlichung ist allein durch den oben dokumentierten Tarifkonflikt
+blockiert. Die Aussage
 „jede Berechnung liefert für jeden Sonderfall exakt dasselbe Ergebnis wie das
 Original“ wäre ohne die fehlenden Original-Screenshots, Referenzfälle und den
 Zugriff auf Plus-Funktionen nicht seriös. Diese Punkte sind deshalb keine verdeckten
