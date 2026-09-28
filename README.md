@@ -41,9 +41,10 @@ npm run build
 
 Der Build erzeugt eine statische Anwendung im Ordner `dist/`. Durch die Hash-Routen
 funktioniert sie ohne Serverkonfiguration auf GitHub Pages. Der vorbereitete
-Workflow liegt unter `.github/workflows/deploy-pages.yml`. Die Aktivierung ist
-aktuell blockiert, weil der verwendete GitHub-Plan Pages für dieses private
-Repository nicht unterstützt; Details stehen in der Vollständigkeitsprüfung.
+Workflow liegt unter `.github/workflows/deploy-pages.yml` und veröffentlicht jeden
+erfolgreichen Build automatisch:
+
+https://leadwerk-web.github.io/Pflege-Cockpit/
 
 ## Projektdokumentation
 
