@@ -1,6 +1,6 @@
 # Phase 2 – funktionale Spezifikation
 
-Stand: 28. September 2026  
+Stand: 28. September 2026
 Status: implementierungsbereit, fachliche Konstanten vor Release erneut prüfen
 
 ## Ziel und Scope
